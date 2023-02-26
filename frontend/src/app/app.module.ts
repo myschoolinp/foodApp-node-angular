@@ -11,10 +11,14 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 import { BooktableComponent } from './booktable/booktable.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AdminloginService } from './adminlogin/service/adminlogin.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './adminlogin/dashboard/dashboard.component';
+import { AdminloginGuard } from './adminlogin/service/adminlogin.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialExampleModule } from './material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,12 +33,17 @@ import { DashboardComponent } from './adminlogin/dashboard/dashboard.component';
       DashboardComponent
    ],
   imports: [
+    MaterialExampleModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+
+
   ],
-  providers: [AdminloginService],
+  providers: [AdminloginService,AdminloginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

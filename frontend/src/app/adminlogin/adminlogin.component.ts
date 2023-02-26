@@ -20,6 +20,7 @@ export class AdminloginComponent implements OnInit {
   login(){
     this.adminLoginService.login(this.loginObj).subscribe((data:any)=>{
       console.log("login with login",data);
+      localStorage.setItem('adminData',JSON.stringify(data));
       this.router.navigate(['/dashboard']);
 
     },(err:any)=>{
