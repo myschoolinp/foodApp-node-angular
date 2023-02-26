@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { DashboardComponent } from './adminlogin/dashboard/dashboard.component';
 import { BooktableComponent } from './booktable/booktable.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'menu',component:MenuComponent},
   {path:'about',component:AboutComponent},
   {path:'booktable',component:BooktableComponent},
+  {path:'dashboard',component:DashboardComponent},
   { path: '**', pathMatch: 'full',  component: PagenotfoundComponent },
 ];
 

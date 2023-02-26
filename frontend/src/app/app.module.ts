@@ -11,9 +11,12 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { AboutComponent } from './about/about.component';
 import { BooktableComponent } from './booktable/booktable.component';
-
+import { FormsModule } from '@angular/forms';
+import { AdminloginService } from './adminlogin/service/adminlogin.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './adminlogin/dashboard/dashboard.component';
 @NgModule({
-  declarations: [								
+  declarations: [
     AppComponent,
       AdminloginComponent,
       PagenotfoundComponent,
@@ -22,13 +25,16 @@ import { BooktableComponent } from './booktable/booktable.component';
       FooterComponent,
       MenuComponent,
       AboutComponent,
-      BooktableComponent
+      BooktableComponent,
+      DashboardComponent
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AdminloginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
