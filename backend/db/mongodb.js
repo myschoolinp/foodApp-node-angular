@@ -4,7 +4,7 @@ const databaseName='e-comm'
 const client= new MongoClient(url);
 var db;
 var dbObj={
- connect:async function dbConnect()
+ connect:async function()
 {
     let result = await client.connect();
     db= result.db(databaseName);

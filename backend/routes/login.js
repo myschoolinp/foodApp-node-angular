@@ -15,7 +15,7 @@ router.post("/user", async (req, res, next) => {
     req.body.mobileNumber == data.mobileNumber &&
     req.body.password == data.password
   ) {
-    console.log("Db Data",data);
+    console.log("Db Data", data);
     jwt.sign(data, secretKey, { expiresIn: "3000s" }, async (err, token) => {
       if (err) {
         res.send("invalide data");
@@ -24,7 +24,7 @@ router.post("/user", async (req, res, next) => {
       }
     });
   } else {
-    res.send({ status: "failed",errMsg:'invalid user' });
+    res.send({ status: "failed", errMsg: "invalid user" });
   }
 
   //});
@@ -36,10 +36,21 @@ router.post("/profile", varifyToken, async (req, res) => {
   res.send(data);
 });
 
+router.post("/addproduct", varifyToken, async(req, res, next) => {
+  let db=dbObj.getDB();
+  var data = db.collection("products");
+  console.log("collection",data);
+  let insert =await data.insertOne(req.body);
+  if (insert) {
+    console.log(insert);
+    res.send(insert);
+  }
+});
+
 function varifyToken(req, res, next) {
   var auth = req.headers["authorization"];
   if (!auth || auth == "undefined") {
-    res.send("Invalid token");
+    res.send({status:'failed',err:"token not found"});
   } else {
     console.log("2");
     var key = auth.split(" ")[1];

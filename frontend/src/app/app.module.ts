@@ -13,11 +13,13 @@ import { AboutComponent } from './about/about.component';
 import { BooktableComponent } from './booktable/booktable.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AdminloginService } from './adminlogin/service/adminlogin.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './adminlogin/dashboard/dashboard.component';
 import { AdminloginGuard } from './adminlogin/service/adminlogin.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from './material.module';
+import { AddproductComponent } from './adminlogin/dialog/addproduct/addproduct.component';
+import { AuthInterceptor } from './intercepter/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MaterialExampleModule } from './material.module';
       MenuComponent,
       AboutComponent,
       BooktableComponent,
-      DashboardComponent
+      DashboardComponent,
+      AddproductComponent
    ],
   imports: [
     MaterialExampleModule,
@@ -43,7 +46,12 @@ import { MaterialExampleModule } from './material.module';
 
 
   ],
-  providers: [AdminloginService,AdminloginGuard],
+  providers: [AdminloginService,AdminloginGuard,
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

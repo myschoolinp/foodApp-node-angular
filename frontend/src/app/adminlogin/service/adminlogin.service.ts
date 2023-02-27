@@ -12,4 +12,8 @@ login(loginData:any){
 return this.http.post('http://localhost:3000/login/user',loginData);
 }
 
+addProduct(data:any){
+  return this.http.post('http://localhost:3000/login/addproduct',data);
+}
+
 }
