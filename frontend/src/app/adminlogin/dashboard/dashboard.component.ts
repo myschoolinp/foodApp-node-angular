@@ -10,8 +10,12 @@ import { AdminloginService } from '../service/adminlogin.service';
 })
 export class DashboardComponent implements OnInit {
   constructor(public dialog: MatDialog,private AdminloginService:AdminloginService) {}
-
-  ngOnInit() {}
+  productList:any;
+  ngOnInit() {
+    this.AdminloginService.getProductList().subscribe((res:any)=>{
+      this.productList=res.data;
+    })
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddproductComponent);

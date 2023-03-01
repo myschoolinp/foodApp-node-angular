@@ -16,4 +16,8 @@ addProduct(data:any){
   return this.http.post('http://localhost:3000/login/addproduct',data);
 }
 
+getProductList(){
+  return this.http.get('http://localhost:3000/login/getproducts');
+}
+
 }
